@@ -38,6 +38,25 @@ const registerUser = async (req, res) => {
     }
 }
 
+const loginUser = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const user = await User.find({ email });
+        if (!user || user.length === 0) {
+            return errorResponse(res, 'Invalid email or password', 401);
+        }
+        const isPasswordValid = await bcrypt.compare(password, user[0].password);
+        if (!isPasswordValid) {
+            return errorResponse(res, 'Invalid email or password', 401);
+        }
+        const token = generateToken(user[0]);
+        successResponse(res, 'Login successful', data = { user: user[0], token }, 200);
+
+    } catch (error) {
+        errorResponse(res, error.message);
+    }
+}
+
 module.exports = {
-  registerUser, 
+  registerUser, loginUser
 }
