@@ -3,6 +3,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoute');
+const adminRoutes = require('./routes/adminRoute');
 
 const app = express();
 
@@ -24,5 +25,5 @@ app.get('/', (req, res) => {
 // routes 
 
 app.use(`${process.env.PREFIX}/auth`, authRoutes);
-
+app.use(`${process.env.PREFIX}/admin`, adminRoutes);
 module.exports = app;
