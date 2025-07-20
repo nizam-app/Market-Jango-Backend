@@ -1,4 +1,5 @@
 const router = require('express').Router();
+
 const { protect, isAdmin } = require('../middlewares/authMiddleware');
 const { approveVendor } = require('../controllers/adminController');
 

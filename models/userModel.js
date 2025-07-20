@@ -5,12 +5,12 @@ const UserSchema = new mongoose.Schema({
     email: { type: String, required: true, unique: true },
     phone: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    role: { type: String, enum: ['admin', 'vendor', 'buyer', 'transporter'], default: 'buyer' },
+    userType: { type: String, enum: ['admin', 'vendor', 'buyer', 'transporter'], default: 'buyer' },
     isApproved: { 
         type: Boolean, 
         default: function() { 
             return this.role === 'vendor' ? false : true 
-        } 
+        }
     },
     businessName: { type: String, },
     businessType: { type: String, enum: ['Individual', 'Small Business', 'Company'] },
