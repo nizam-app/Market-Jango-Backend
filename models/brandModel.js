@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 
-const CategorySchema = new mongoose.Schema(
+const BrandSchema = new mongoose.Schema(
     {
         name: {type:String},
-        parentCategoryId: { type: mongoose.Schema.Types.ObjectId, ref: 'Category', default: null },
         image: {type:String},
         isActive: { type: Boolean, default: true },
         createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     },
     { timestamps: true }
+
 );
 
-const Category = mongoose.model('Category', CategorySchema);
-module.exports = Category;
+const Brand = mongoose.model('Brand', BrandSchema);
+module.exports = Brand;
