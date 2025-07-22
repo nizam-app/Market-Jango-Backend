@@ -6,12 +6,13 @@ const UserSchema = new mongoose.Schema({
     email: { type: String, required: true, unique: true },
     phone: { type: String, required: true, unique: true },
     password: { type: String, required: true },
+    photo: {type: String},
     language: {type: String, required: true},
     gender: {type: String},
     age: {type: String},
     about: {type: String},
     location: {type: String},
-    userType: { type: String, enum: ['admin', 'vendor', 'buyer', 'transporter',"driver"], default: 'buyer' },
+    userType: { type: String, enum: ['admin', 'vendor', 'buyer', 'transporter','driver'], default: 'buyer' },
     isApproved: {
         type: Boolean, 
         default: function() { 
